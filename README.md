@@ -1,2 +1,2 @@
 # Fu-Xuan-RPC
-Honkai : Star Rail Discord RPC avec Auto Daily Reward
+Outils pour le jeu Honkai : Star Rail comme l'intégration à Discord et l'auto login HoYoLab
