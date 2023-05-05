@@ -51,14 +51,8 @@ L'application commencera à surveiller le jeu Honkai : Star Rail et mettra à jo
 
 1. Installez `pkg` globalement en exécutant `npm install -g pkg`.
 2. Compilez l'application en exécutant `pkg -t node18-win-x64 fu_xuan_rpc.js`.
-3. Un fichier `.exe` sera créé dans le dossier du projet.
-4. Installez `rcedit` globalement en exécutant `npm install -g rcedit`.
-5. Utilisez `rcedit` pour appliquer l'icône personnalisée au fichier `.exe` en exécutant la commande suivante :
-`rcedit "<nom_du_fichier_compilé>.exe" --set-icon "<nom_de_l_icone>.ico"`
 
-Remplacez `<nom_du_fichier_compilé>` par le nom de votre fichier `.exe` et `<nom_de_l_icone>` par le nom de votre fichier d'icône.
-
-Maintenant, le fichier `.exe` aura l'icône personnalisée que vous avez fournie.
+Un fichier `.exe` sera créé dans le dossier du projet.
 
 ### Lancement automatique au démarrage de Windows
 
