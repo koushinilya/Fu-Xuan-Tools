@@ -5,20 +5,20 @@ const sleep = require('util').promisify(setTimeout);
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const schedule = require('node-schedule');
 
-const discordWebhook = 'https://discord.com/api/webhooks/1104096514327990373/XGMALG3b_t9yHkJUYhjec2OsM1ikhifPvLBRwLiOj4siD_s5jM_f9sIEaehTAnPUudZD';
+const discordWebhook = process.env.DISCORD_WEBHOOK;
 
 require('dotenv').config();
 
-const details = process.env.DETAILS;
-const state = process.env.STATE;
-const token = process.env.TOKEN;
-const discordId = process.env.DISCORD_ID;
-const discordNotify = process.env.DISCORD_NOTIFY === 'true';
-const discordStarRail = process.env.DISCORD_STAR_RAIL === 'true';
-const discordName = process.env.DISCORD_NAME;
+const {
+  DETAILS: details,
+  STATE: state,
+  TOKEN: token,
+  DISCORD_ID: discordId,
+  DISCORD_NOTIFY: discordNotify,
+  DISCORD_STAR_RAIL: discordStarRail,
+  DISCORD_NAME: discordName,
+} = process.env;
 
-
-// Discord RPC
 const clientId = '1101519652825350184';
 DiscordRPC.register(clientId);
 const rpc = new DiscordRPC.Client({ transport: 'ipc' });
@@ -71,7 +71,7 @@ async function postWebhook(data) {
 
 async function scheduleAutoSign() {
   const rule = new schedule.RecurrenceRule();
-  rule.hour = 16; // 00 h 00 UTC+8 est équivalent à 16 h 00 UTC
+  rule.hour = 16;
   rule.minute = 0;
   rule.second = 0;
   rule.tz = 'Etc/GMT-8';
@@ -90,10 +90,21 @@ async function scheduleAutoSign() {
   console.log('Scheduled auto sign job.');
 }
 
+async function updateRPCActivity() {
+  const activity = {
+    largeImageKey: 'hsr_icon',
+    startTimestamp: new Date(),
+  };
+
+  if (details) activity.details = details;
+  if (state) activity.state = state;
+
+  await rpc.setActivity(activity);
+}
+
 async function main() {
   let rpcConnected = false;
 
-  // Schedule the auto sign job
   await scheduleAutoSign();
 
   while (true) {
@@ -104,13 +115,8 @@ async function main() {
       if (starRailRunning && !rpcConnected) {
         await rpc.login({ clientId });
         rpcConnected = true;
-        await rpc.setActivity({
-          details: details,
-          state: state,
-          largeImageKey: 'hsr_icon',
-          startTimestamp: new Date(),
-        });        
 
+        await updateRPCActivity();
         console.log('Discord RPC connected.');
       } else if (!starRailRunning && rpcConnected) {
         await rpc.destroy();
