@@ -6,6 +6,7 @@ Une application personnalisable de Discord RPC pour le jeu Honkai : Star Rail.
 ## Prérequis
 
 - Node.js 14.0 ou supérieur
+- [pkg](https://www.npmjs.com/package/pkg) (pour compiler l'application en `.exe`)
 
 ## Installation
 
@@ -40,12 +41,29 @@ console.log('ltoken='+getCookie('ltoken')+'; ltuid='+getCookie('ltuid')+';');
 5. Copiez la chaîne résultante qui ressemble à `ltoken=xxxx; ltuid=xxxx;` et collez-la dans le fichier `.env` à côté de `TOKEN=`.
 
 ## Utilisation
-
+### Exécution à partir du code source
 1. Ouvrez un terminal ou un invite de commandes dans le dossier du projet.
+2. Exécutez `node fu_xuan_rpc.js` pour lancer l'application.
 
-2. Exécutez `node <nom_du_fichier_principal>` pour lancer l'application (par exemple : node app.js si le fichier principal s'appelle app.js).
+L'application commencera à surveiller le jeu Honkai : Star Rail et mettra à jour votre statut Discord RPC en fonction des informations fournies dans le fichier `.env`.
 
-3. L'application commencera à surveiller le jeu Star Rail et mettra à jour votre statut Discord RPC en fonction des informations fournies dans le fichier `.env`.
+### Compilation en fichier .exe
+
+1. Installez `pkg` globalement en exécutant `npm install -g pkg`.
+2. Compilez l'application en exécutant `pkg -t node18-win-x64 fu_xuan_rpc.js`.
+3. Un fichier `.exe` sera créé dans le dossier du projet.
+4. Installez `rcedit` globalement en exécutant `npm install -g rcedit`.
+5. Utilisez `rcedit` pour appliquer l'icône personnalisée au fichier `.exe` en exécutant la commande suivante :
+`rcedit "<nom_du_fichier_compilé>.exe" --set-icon "<nom_de_l_icone>.ico"`
+
+Remplacez `<nom_du_fichier_compilé>` par le nom de votre fichier `.exe` et `<nom_de_l_icone>` par le nom de votre fichier d'icône.
+
+Maintenant, le fichier `.exe` aura l'icône personnalisée que vous avez fournie.
+
+### Lancement automatique au démarrage de Windows
+
+1. Copiez le fichier `.exe` compilé dans le dossier `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup`.
+2. Redémarrez votre ordinateur. L'application se lancera automatiquement à chaque démarrage de Windows.
 
 ## Variables du fichier .env
 
