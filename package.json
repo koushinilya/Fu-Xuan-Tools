@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "discord-rpc": "^4.0.1",
+    "dotenv": "^16.0.3",
+    "ffi-napi": "^4.0.3",
+    "node-fetch": "^3.3.1",
+    "node-schedule": "^2.1.1",
+    "rcedit": "^3.0.1",
+    "ref-napi": "^3.0.3"
+  }
+}
