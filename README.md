@@ -49,13 +49,13 @@ console.log('ltoken='+getCookie('ltoken')+'; ltuid='+getCookie('ltuid')+';');
 
 ## Variables du fichier .env
 
-`DETAILS`: Le texte affiché dans les détails du statut Discord RPC.
-`STATE`: Le texte affiché dans l'état du statut Discord RPC.
-`TOKEN`: Le token Hoyolab utilisé pour la récupération des récompenses.
-`DISCORD_ID`: Votre identifiant Discord pour les notifications.
-`DISCORD_NOTIFY`: Définit si les notifications doivent être envoyées (`true` ou `false`).
-`DISCORD_STAR_RAIL`: Définit si le jeu Star Rail doit être pris en compte dans les notifications (`true` ou `false`).
-`DISCORD_NAME`: Votre nom Discord pour les notifications.
+- `DETAILS`: Le texte affiché dans les détails du statut Discord RPC.
+- `STATE`: Le texte affiché dans l'état du statut Discord RPC.
+- `TOKEN`: Le token Hoyolab utilisé pour la récupération des récompenses.
+- `DISCORD_ID`: Votre identifiant Discord pour les notifications.
+- `DISCORD_NOTIFY`: Définit si les notifications doivent être envoyées (`true` ou `false`).
+- `DISCORD_STAR_RAIL`: Définit si le jeu Star Rail doit être pris en compte dans les notifications (`true` ou `false`).
+- `DISCORD_NAME`: Votre nom Discord pour les notifications.
 
 ## Licence
 Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
